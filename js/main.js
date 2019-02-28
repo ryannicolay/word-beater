@@ -44,9 +44,29 @@ const words = [
 // Initialize Game
 function init() {
   showWord(words);
+
+  wordInput.addEventListener("input", startMatch);
+
+  setInterval(countdown, 1000);
+
+  setInterval(checkStatus, 50);
 }
 
 function showWord(words) {
   const randIndex = Math.floor(Math.random() * words.length);
   currentWord.innerHTML = words[randIndex];
+}
+
+function countdown() {
+  if (time > 0) {
+    time--;
+  } else if (time === 0) {
+    isPlaying = false;
+  }
+
+  timeDisplay.innerHTML = time;
+}
+
+function checkStatus() {
+  if (!isPlaying && time === 0) [(message.innerHTML = "Game Over!!!")];
 }
