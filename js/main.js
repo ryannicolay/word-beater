@@ -52,6 +52,23 @@ function init() {
   setInterval(checkStatus, 50);
 }
 
+function startMatch() {
+  if (matchWords) {
+    isPlaying = true;
+    time = 4;
+  }
+}
+
+function matchWords() {
+  if (wordInput.value === currentWord.innerHTML) {
+    message.innerHTML = "Correct!";
+    return true;
+  } else {
+    message.innerHTML = "";
+    return false;
+  }
+}
+
 function showWord(words) {
   const randIndex = Math.floor(Math.random() * words.length);
   currentWord.innerHTML = words[randIndex];
